@@ -1,13 +1,13 @@
 import React from 'react'
-import LogIn from "@/components/logIn";
+import SignUp from "@/components/signUp";
 
 function LogInPage() {
-  return (
+    return (
     <div className='flex'>
-        <div className='w-1/2'><LogIn/></div>
+        <div className='w-1/2'><SignUp/></div>
         <div className='w-1/2 bg-blue-700 min-h-screen'></div>
     </div>
-  )
+    )
 }
 
 export default LogInPage
