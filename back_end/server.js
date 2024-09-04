@@ -1,18 +1,25 @@
-//file sestem setup
-const fs = require("fs");
+const express = require("express");
+const dotenv = require("dotenv");
 const cors = require("cors");
-//server setpu
-const express = require("express"); //import express
-const app = express(); //start app
+const { logger } = require("./middlewares/logger");
+dotenv.config();
 
-///
+const authRoutes = require("./routes/auth-route");
+const userRoutes = require("./routes/user-route");
+const categoryRoutes = require("./routes/category-route");
+
+const PORT = process.env.PORT;
+
+const app = express();
 
 app.use(cors());
+app.use(express.json());
+app.use(logger());
 
-///
-const port = 7000; //port
-app.listen(port, () => console.log("Server is running on localhost:7000")); //listen and sart server
-app.use(express.json()); //middleware json --> object
-app.get("/", (req, res) => {
-	res.send("Hello World");
-}); //get request
+app.use("/auth", authRoutes);
+app.use("/users", userRoutes);
+app.use("/categories", categoryRoutes);
+
+app.listen(PORT, () => {
+	console.log(`Сервер localhost:${PORT} дээр аслаа.`);
+});
