@@ -11,26 +11,35 @@ function SignUp() {
 		email: "",
 		password: "",
 	});
-	const createUser = async () => {
-		console.log("-----------------", JSON.stringify(user), "----------------");
-		try {
-			const res = await fetch("http://localhost:8008/auth/signup", {
-				method: "POST",
-				headers: {
-					"content-type": "application/json",
-				},
-				body: JSON.stringify(user),
-			});
-			console.log(res);
+	const [repassword, setRepassword] = useState("");
 
-			if (res.status === 201) {
-				alert("user created successfully");
-				router.push("/login");
-			} else {
-				alert("user creation failed");
+	const createUser = async () => {
+		if (user.password === repassword) {
+			console.log(
+				"-----------------",
+				JSON.stringify(user),
+				"----------------"
+			);
+			try {
+				const res = await fetch("http://localhost:8008/auth/signup", {
+					method: "POST",
+					headers: {
+						"content-type": "application/json",
+					},
+					body: JSON.stringify(user),
+				});
+				console.log(res);
+
+				if (res.status === 201) {
+					router.push("/login");
+				} else {
+					alert("user creation failed");
+				}
+			} catch (error) {
+				console.log(error);
 			}
-		} catch (error) {
-			console.log(error);
+		} else {
+			alert("passwords do not match");
 		}
 	};
 
@@ -80,6 +89,7 @@ function SignUp() {
 						<input
 							type="password"
 							placeholder="re-password"
+							onChange={(e) => setRepassword(e.target.value)}
 							className="input bg-slate-300 text-slate-600 input-bordered"
 							required
 						/>
