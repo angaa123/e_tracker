@@ -2,12 +2,12 @@ import React from "react";
 
 function Header() {
 	return (
-		<div>
+		<header>
 			<div className="drawer">
 				<input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
 				<div className="drawer-content flex justify-center">
 					{/* Navbar */}
-					<div className="navbar bg-base-300 w-5/6">
+					<div className="navbar w-full">
 						<div className="flex-none lg:hidden">
 							<label
 								htmlFor="my-drawer-3"
@@ -29,6 +29,7 @@ function Header() {
 								</svg>
 							</label>
 						</div>
+						{/* hoid heseg*/}
 						<div className="mx-2 flex-1 px-2">
 							<div className="avatar">
 								<div className=" w-12 rounded-full ">
@@ -79,7 +80,7 @@ function Header() {
 					</div>
 				</div>
 			</div>
-		</div>
+		</header>
 	);
 }
 

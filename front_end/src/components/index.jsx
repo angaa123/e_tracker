@@ -6,9 +6,12 @@ function Index() {
 	return (
 		<>
 			<Header />
-			<div className="flex flex-col md:flex-row justify-between items-center">
-				<VisaCard />
-				<Income />
+			<div className="flex flex-col md:flex-row justify-center bg-base-200">
+				<div className="w-5/6">
+					<div className="cardContainer flex">
+						<VisaCard />
+					</div>
+				</div>
 			</div>
 		</>
 	);
