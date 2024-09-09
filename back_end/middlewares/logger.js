@@ -1,8 +1,8 @@
-const logger = () => {
+const myLogger = () => {
 	return (req, res, next) => {
 		console.log(`${req.method}: ${req.originalUrl}`);
 		next();
 	};
 };
 
-module.exports = { logger };
+module.exports = { myLogger };

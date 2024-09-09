@@ -9,29 +9,33 @@ function logIn() {
 		email: "",
 		password: "",
 	});
+
 	const logInUser = async () => {
 		console.log("-----------------", JSON.stringify(user), "----------------");
 		try {
 			const res = await fetch("http://localhost:8008/auth/signin", {
 				method: "POST",
 				headers: {
-					"content-type": "application/json",
+					"Content-Type": "application/json",
 				},
 				body: JSON.stringify(user),
 			});
-			console.log(res);
+			const data = await res.json(); // Parse response data
 
 			if (res.status === 200) {
+				console.log("user logged in");
+				alert("User login successful");
+
+				console.log(data.token); // Log actual response data
+				localStorage.setItem("token", data.token);
 				router.push("/home");
 			} else {
-				alert("user failed");
+				alert("User login failed");
 			}
 		} catch (error) {
 			console.log(error);
 		}
 	};
-
-	console.log("user", user);
 
 	return (
 		<div className="hero bg-white min-h-screen">

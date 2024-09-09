@@ -1,8 +1,22 @@
+"use client";
 import React from "react";
 import Header from "./header";
 import VisaCard from "@/components/visaCard";
 import Income from "./income";
+
+import { useEffect, useState } from "react";
+
 function Index() {
+	const [token, setToken] = useState(null);
+
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			const storedToken = localStorage.getItem("token");
+			console.log("token************", storedToken);
+			setToken(storedToken);
+		}
+	}, []);
+
 	return (
 		<>
 			<Header />

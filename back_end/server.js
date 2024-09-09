@@ -1,7 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const { logger } = require("./middlewares/logger");
+const { myLogger } = require("./middlewares/logger");
 dotenv.config();
 
 const authRoutes = require("./routes/auth-route");
@@ -14,7 +14,8 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(logger());
+
+app.use(myLogger());
 
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);

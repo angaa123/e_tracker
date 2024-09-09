@@ -1,7 +1,7 @@
 const sql = require("../config/db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
+const { JTW_PASSWORD } = process.env;
 const signUp = async (req, res) => {
 	const { email, name, password } = req.body;
 	try {
@@ -32,9 +32,10 @@ const signIn = async (req, res) => {
 				message: "Хэрэглэгчийн имэйл эсвэл нууц үг тохирохгүй байна.",
 			});
 		} else {
-			const token = jwt.sign({ id: user.id }, "JWT_TOKEN_PASS@123", {
+			const token = jwt.sign({ id: user.id }, JTW_PASSWORD, {
 				expiresIn: "1h",
 			});
+			console.log("TOKEN", token);
 			res.status(200).json({
 				message: "success",
 				token,
