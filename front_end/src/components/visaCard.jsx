@@ -5,7 +5,7 @@ function VisaCard() {
 	return (
 		<div>
 			<div
-				className="card bg-slate-50 w-96 h-52"
+				className="card bg-slate-50 min-h-52 max-w-96"
 				style={{
 					backgroundImage: "url('https://i.imgur.com/v8ALuOS.jpeg')",
 					backgroundSize: "cover",

@@ -1,4 +1,5 @@
 import React from "react";
+import logo from '../media-src/frame3.png'; // Adjust the path as needed
 
 function Header() {
 	return (
@@ -29,11 +30,11 @@ function Header() {
 								</svg>
 							</label>
 						</div>
-						{/* hoid heseg*/}
+						{/* Head Section */}
 						<div className="mx-2 flex-1 px-2">
 							<div className="avatar">
-								<div className=" w-12 rounded-full ">
-									<img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+								<div className="w-12 rounded-full">
+									<img src={logo} alt="logo" />
 								</div>
 							</div>
 							<ul className="menu menu-horizontal">
@@ -70,8 +71,8 @@ function Header() {
 								</li>
 								<li>
 									<div className="avatar">
-										<div className=" w-12 rounded-full ">
-											<img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+										<div className="w-12 rounded-full">
+											<img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" alt="User Avatar"/>
 										</div>
 									</div>
 								</li>
