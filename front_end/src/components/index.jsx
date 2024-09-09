@@ -3,8 +3,7 @@ import React from "react";
 import Header from "./header";
 import VisaCard from "@/components/visaCard";
 import Income from "./income";
-
-import { useEffect, useState } from "react";
+import Expence from "./expence";
 
 function Index() {
 	const storedToken = localStorage.getItem("token");
@@ -17,6 +16,8 @@ function Index() {
 				<div className="w-5/6">
 					<div className="cardContainer flex">
 						<VisaCard />
+						<Income />
+						<Expence />
 					</div>
 				</div>
 			</div>
