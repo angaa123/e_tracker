@@ -1,5 +1,5 @@
 import React from "react";
-import logo from '../media-src/frame3.png'; // Adjust the path as needed
+import logo from "@/media-src/frame3.png"; // Adjust the path as needed
 
 function Header() {
 	return (
@@ -72,7 +72,10 @@ function Header() {
 								<li>
 									<div className="avatar">
 										<div className="w-12 rounded-full">
-											<img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" alt="User Avatar"/>
+											<img
+												src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+												alt="User Avatar"
+											/>
 										</div>
 									</div>
 								</li>

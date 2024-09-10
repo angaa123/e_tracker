@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-function logIn() {
+function LogIn() {
 	const router = useRouter();
 	const [user, setUser] = useState({
 		email: "",
@@ -96,4 +96,4 @@ function logIn() {
 	);
 }
 
-export default logIn;
+export default LogIn;
