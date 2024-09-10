@@ -28,7 +28,7 @@ function LogIn() {
 
 				console.log(data.token); // Log actual response data
 				localStorage.setItem("token", data.token);
-				router.push("/home");
+				router.push("/Dashboard");
 			} else {
 				alert("User login failed");
 			}

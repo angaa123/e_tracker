@@ -3,7 +3,7 @@ const sql = require("../config/db");
 const getCurrentUser = async (req, res) => {
 	const { id } = req.user;
 	const [data] = await sql`SELECT * FROM users WHERE id=${id}`;
-
+	console.log("user:",data);
 	res.status(200).json({ message: "success", user: data });
 };
 
