@@ -1,17 +1,15 @@
 const { Router } = require("express");
 const {
-	getCurrentUser,
-	getAllUser,
-	createUser,
-	deleteUser,
-	updateUser,
-} = require("../controllers/user-controller");
+	getAllRecord,
+	getInfo,
+	getChartData,
+} = require("../controllers/record-controller");
 const { auth } = require("../middlewares/auth");
 
 const router = Router();
 
-router.route("/chart").get(auth, getCurrentUser);
-router.route("/").get(getAllUser).post(createUser);
-router.route("/:id").put(updateUser).delete(deleteUser);
+router.route("/info").get(auth, getInfo);
+router.route("/chart").get(auth, getChartData);
+router.route("/").get(auth, getAllRecord);
 
 module.exports = router;

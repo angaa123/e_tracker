@@ -1,7 +1,26 @@
+"use client";
 import React from "react";
 import logo from "@/media-src/frame3.png"; // Adjust the path as needed
+import { UserContext } from "../../app/user-context/user-context";
+import { useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
+import { RecordModal } from "./record-modal";
 
 function Header() {
+	useEffect(() => {
+		fetchUserData();
+	}, []);
+	const { user, fetchUserData } = useContext(UserContext);
+	const router = useRouter();
+	const logOut = () => {
+		localStorage.removeItem("token");
+		router.push("/login");
+	};
+	const [isOpen, setIsOpen] = useState(false);
+
+	const handleClose = () => {
+		setIsOpen(false);
+	};
 	return (
 		<header>
 			<div className="drawer">
@@ -51,7 +70,10 @@ function Header() {
 							<ul className="menu menu-horizontal">
 								{/* Navbar menu content here */}
 								<li>
-									<button className="btn bg-blue-700 rounded-full">
+									<button
+										className="btn bg-blue-700 rounded-full"
+										onClick={() => setIsOpen(true)}
+									>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											className="h-6 w-6"
@@ -70,6 +92,7 @@ function Header() {
 									</button>
 								</li>
 								<li>
+									<RecordModal isOpen={isOpen} close={handleClose} />
 									<div className="avatar">
 										<div className="w-12 rounded-full">
 											<img
