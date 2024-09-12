@@ -1,18 +1,18 @@
 import { Bar } from "react-chartjs-2";
 
-const BarChart = ({ barChartData }) => {
+const BarChart = ({ bar }) => {
 	const data1 = {
-		labels: ["Jan"],
+		labels: bar.map((item) => item.sar),
 		datasets: [
 			{
 				label: "Income",
 				backgroundColor: "#22C55E",
-				data: [20_000],
+				data: bar.map((item) => item.total_inc),
 			},
 			{
 				label: "Expense",
 				backgroundColor: "#F87171",
-				data: [15_000],
+				data: bar.map((item) => item.total_exp),
 			},
 		],
 	};

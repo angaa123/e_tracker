@@ -22,8 +22,9 @@ FROM record
 WHERE uid = ${uid}
 GROUP BY transaction_type;`;
 		res.status(200).json({ income, expense });
+		console.log(income, expense);
 	} catch (error) {
-		res.status(400).json({ message: "failded", error });
+		res.status(400).json({ message: "failded blalbalbalballba", error });
 	}
 };
 
@@ -41,6 +42,7 @@ const getChartData = async (req, res) => {
     SUM(CASE WHEN r.transaction_type = 'EXP' THEN r.amount ELSE 0 END) as total_exp,
     SUM(CASE WHEN r.transaction_type = 'INC' THEN r.amount ELSE 0 END) as total_inc
     FROM record r
+		WHERE r.uid=${uid}
     GROUP BY DATE_TRUNC('month', r.created_at) 
     ORDER BY DATE_TRUNC('month', r.created_at);
     `;

@@ -4,8 +4,10 @@ import React from "react";
 import VisaCard from "../cards/visaCard";
 import Income from "../cards/income";
 import Expence from "../cards/expence";
+import Record from "./record";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "@/app/user-context/user-context";
+import { dashContext } from "@/app/user-context/dash-context";
 import axios from "axios";
 
 import {
@@ -23,45 +25,22 @@ Chart.register(CategoryScale, LinearScale, BarElement, ArcElement, Legend);
 
 function Dashboard() {
 	const { user } = useContext(UserContext);
-	const [transactions, setTransactions] = useState([]);
-	const [cardInfo, setCardInfo] = useState(null);
 
-	const fetchTransactions = async () => {
-		try {
-			const res = await axios.get(`http://localhost:8008/records`);
-			console.log("DD", res.data.guilgee);
-			setTransactions(res.data.guilgee);
-		} catch (error) {
-			console.error(error);
-			toast.error("Failed to fetch transactions");
-		}
-	};
+	const { transactions } = useContext(dashContext);
+	const { income } = useContext(dashContext);
+	const { expense } = useContext(dashContext);
+	const { bar } = useContext(dashContext);
+	const { donat } = useContext(dashContext);
 
-	const getInfoCardData = async () => {
-		try {
-			const res = await axios.get(`http://localhost:8008/records/info`);
-			console.log("ST", res.data);
-			setCardInfo(res.data);
-		} catch (error) {
-			console.error(error);
-			toast.error("Failed to fetch transactions");
-		}
-	};
-
-	useEffect(() => {
-		fetchTransactions();
-		getInfoCardData();
-	}, [user]);
-
-	console.log("cardInfo", cardInfo);
 	return (
 		<div className="flex flex-col md:flex-row justify-center bg-base-200 min-h-full">
 			<div className="grid grid-cols-6 overflow-auto gap-8 m-8 w-5/6">
 				<VisaCard />
-				<Income />
-				<Expence />
-				<BarChart />
-				<DonatChart />
+				<Income ind={income} />
+				<Expence expd={expense} />
+				<BarChart bar={bar} />
+				<DonatChart donat={donat} />
+				<Record transactions={transactions} />
 			</div>
 		</div>
 	);

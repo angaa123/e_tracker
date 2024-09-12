@@ -1,11 +1,14 @@
+"use client";
 import { Doughnut } from "react-chartjs-2";
 
-const DoughnurChart = ({ categoryData }) => {
+const DoughnurChart = ({ donat }) => {
+	const amountdata = donat.map((i) => i.sum);
+	const labels = donat.map((i) => i.cat_name);
+
 	const data2 = {
 		datasets: [
 			{
-				data: [10, 10, 20, 40, 20],
-
+				data: amountdata,
 				backgroundColor: [
 					"#1C64F2",
 					"#E74694",
@@ -22,7 +25,7 @@ const DoughnurChart = ({ categoryData }) => {
 				],
 			},
 		],
-		labels: ["Food", "Tech", "Taxi", "Health", "Car"],
+		labels: labels,
 	};
 
 	const options2 = {
